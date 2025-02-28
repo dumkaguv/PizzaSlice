@@ -110,3 +110,9 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+button,
+a,
+label {
+  cursor: pointer;
+}
