@@ -4,7 +4,7 @@ import React from "react";
 
 import { Title } from "./";
 import { FilterCheckbox, FilterCheckboxProps } from "./filter-checkbox";
-import { Input } from "@/components/ui";
+import { Input, Skeleton } from "@/components/ui";
 
 type Item = FilterCheckboxProps;
 
@@ -12,6 +12,7 @@ interface Props {
   title: string;
   items: Item[];
   limit?: number;
+  isLoading?: boolean;
   searchInputPlaceholder?: string;
   onChange?: (values: string[]) => void;
   defaultValues?: string[];
@@ -24,6 +25,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({ ...props }) => {
     items,
     limit = 5,
     searchInputPlaceholder = "Поиск...",
+    isLoading,
     onChange,
     defaultValues,
     className,
@@ -31,6 +33,19 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({ ...props }) => {
 
   const [showAll, setShowAll] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
+
+  if (isLoading) {
+    return (
+      <div className={className}>
+        <Title text={title} size="xs" className="mb-3 font-bold" />
+
+        {new Array(limit).fill(null).map((_, index) => (
+          <Skeleton key={index} className="mb-4 h-6 rounded-lg" />
+        ))}
+        <Skeleton className="mb-4 h-6 w-28 rounded-lg" />
+      </div>
+    );
+  }
 
   const list = showAll
     ? items.filter((item) =>
@@ -42,8 +57,12 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({ ...props }) => {
     setShowAll((prev) => !prev);
   };
 
-  const onSearchInputChange = (value: string) => {
-    setSearchValue(value);
+  const onSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
+
+  const onIconClearClick = () => {
+    setSearchValue("");
   };
 
   return (
@@ -53,10 +72,12 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({ ...props }) => {
       {showAll && (
         <div className="mb-5">
           <Input
-            onChange={(event) => onSearchInputChange(event.target.value)}
+            onChange={onSearchInputChange}
             placeholder={searchInputPlaceholder}
-            className="border-none bg-gray-50"
+            className="border-none bg-gray-50 pl-10"
+            isShowIcons
             value={searchValue}
+            onIconClearClick={onIconClearClick}
           />
         </div>
       )}
@@ -76,7 +97,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({ ...props }) => {
       {items.length > limit && !searchValue.length && (
         <button
           onClick={onShowAllClick}
-          className="text-primary mt-5"
+          className="text-primary hover:text-primary/80 mt-5 transition-colors duration-100"
           type="button"
         >
           {!showAll ? "+ Показать ещё" : "Скрыть"}

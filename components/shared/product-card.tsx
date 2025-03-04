@@ -5,6 +5,7 @@ import React from "react";
 import { Title } from "./";
 import { Button } from "@/components/ui";
 import { Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface Props {
   id: number;
@@ -18,7 +19,7 @@ export const ProductCard: React.FC<Props> = ({ ...props }) => {
   const { id, name, price, imageUrl, className } = props;
 
   return (
-    <div className={className}>
+    <div className={cn("hover:scale-[1.03] duration-200 transition-transform", className)}>
       <Link href={`/product/${id}`}>
         <div className="bg-secondary flex h-[260px] justify-center rounded-lg p-6">
           <Image
