@@ -1,13 +1,8 @@
+import { Api } from "@/services/api-client";
+import { Ingredient } from "@prisma/client";
 import React from "react";
 
-import { Ingredient } from "@prisma/client";
-import { Api } from "@/services/api-client";
-
-interface ReturnProps {
-  ingredients: Ingredient[];
-  isLoading: boolean;
-}
-export const UseFilterIngredients = (): ReturnProps => {
+export const useIngredients = () => {
   const [ingredients, setIngredients] = React.useState<Ingredient[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -26,5 +21,10 @@ export const UseFilterIngredients = (): ReturnProps => {
     fetchIngredients();
   }, []);
 
-  return { ingredients, isLoading };
+  const formattedIngredients = ingredients.map((ingredient) => ({
+    value: ingredient.ingredientId.toString(),
+    text: ingredient.name,
+  }));
+
+  return { ingredients, isLoading, formattedIngredients };
 };

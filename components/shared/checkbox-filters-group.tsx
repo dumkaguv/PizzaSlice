@@ -14,9 +14,10 @@ interface Props {
   limit?: number;
   isLoading?: boolean;
   searchInputPlaceholder?: string;
-  onChange?: (values: string[]) => void;
-  defaultValues?: string[];
+  onCheckboxClick?: (id: string) => void;
+  selectedValues?: Set<string>;
   className?: string;
+  name?: string;
 }
 
 export const CheckboxFiltersGroup: React.FC<Props> = ({ ...props }) => {
@@ -26,8 +27,9 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({ ...props }) => {
     limit = 5,
     searchInputPlaceholder = "Поиск...",
     isLoading,
-    onChange,
-    defaultValues,
+    onCheckboxClick,
+    name,
+    selectedValues,
     className,
   } = props;
 
@@ -84,11 +86,14 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({ ...props }) => {
 
       <ul className="scrollbar grid max-h-96 gap-4 overflow-auto pr-2">
         {list.map((item, index) => (
-          <li key={index}>
+          <li key={`${index}-${item.value}-${item.text}`}>
             <FilterCheckbox
               text={item.text}
               value={item.value}
               endAdornment={item.endAdornment}
+              checked={selectedValues?.has(item.value)}
+              onCheckedChange={() => onCheckboxClick?.(item.value)}
+              name={name}
             />
           </li>
         ))}
