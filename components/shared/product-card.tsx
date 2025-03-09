@@ -19,8 +19,13 @@ export const ProductCard: React.FC<Props> = ({ ...props }) => {
   const { id, name, price, imageUrl, className } = props;
 
   return (
-    <div className={cn("hover:scale-[1.03] duration-200 transition-transform", className)}>
-      <Link href={`/product/${id}`}>
+    <div
+      className={cn(
+        "h-full transition-transform duration-200 hover:scale-[1.03]",
+        className,
+      )}
+    >
+      <Link className="grid min-h-full" href={`/product/${id}`}>
         <div className="bg-secondary flex h-[260px] justify-center rounded-lg p-6">
           <Image
             className="h-[215px] w-[215px]"
@@ -35,7 +40,7 @@ export const ProductCard: React.FC<Props> = ({ ...props }) => {
 
         <p className="text-sm text-gray-400">Ингридиенты</p>
 
-        <div className="mt-4 flex items-center justify-between">
+        <div className="mt-4 flex justify-between self-end">
           <span className="text-[20px]">
             от <b>{price} ₽</b>
           </span>

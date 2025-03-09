@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--top-bar-height);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {

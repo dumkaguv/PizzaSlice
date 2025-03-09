@@ -1,29 +1,26 @@
+"use client";
+
 import React from "react";
+
 import { cn } from "@/lib/utils";
+import { useCategoriesIntersectionObserver } from "@/hooks";
+import { Category } from "@prisma/client";
 
 interface Props {
+  categories: Category[];
   className?: string;
 }
 
-const categories = [
-  "Пиццы",
-  "Комбо",
-  "Закуски",
-  "Коктейли",
-  "Кофе",
-  "Напитки",
-  "Десерты",
-  "Десерты",
-];
-const activeIndex = 0;
+export const Categories: React.FC<Props> = ({ className, categories }) => {
+  const { activeIndex } = useCategoriesIntersectionObserver({ categories });
 
-export const Categories: React.FC<Props> = ({ className }) => {
   return (
     <div
       className={cn("inline-flex gap-1 rounded-2xl bg-gray-50 p-1", className)}
     >
       {categories.map((category, index) => (
-        <button
+        <a
+          href={`#category-${category.categoryId}`}
           className={cn(
             "hover:text-primary flex h-11 items-center rounded-2xl px-5 font-bold duration-200 hover:bg-white",
             activeIndex === index &&
@@ -31,8 +28,8 @@ export const Categories: React.FC<Props> = ({ className }) => {
           )}
           key={index}
         >
-          {category}
-        </button>
+          {category.name}
+        </a>
       ))}
     </div>
   );
