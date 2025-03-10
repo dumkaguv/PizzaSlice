@@ -1,7 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 
-import { Container, ProductGroupVariants, PizzaImage, Title } from "@/components/shared";
+import { Container, ProductGroupVariants, PizzaImage, Title } from "@/shared/components/shared";
 import { prisma } from "@/prisma/prisma-client";
 
 interface ProductPageProps {
@@ -31,20 +31,7 @@ export default async function ProductPage({
           <Title text={product.name} size="md" className="font-extrabold mb-1" />
 
           <p className="text-gray-400">Details...</p>
-          <ProductGroupVariants items={[
-            {
-              name: "Маленькая",
-              value: "1",
-            },
-            {
-              name: "Средняя",
-              value: "2",
-            },
-            {
-              name: "Большая",
-              value: "3",
-            },
-          ]} />
+          <ProductGroupVariants items={[]} />
         </div>
         </div>
       </Container>
