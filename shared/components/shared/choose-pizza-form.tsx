@@ -70,7 +70,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setSize((prevSize: PizzaSize) => {
+    setSize((prevSize) => { 
       return availablePizzas.some((pizza) => prevSize === pizza.size)
         ? prevSize
         : (availablePizzas[0].size as PizzaSize);

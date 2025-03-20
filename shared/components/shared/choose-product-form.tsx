@@ -8,13 +8,15 @@ import { Button } from "@/shared/components/ui";
 interface Props {
   imageUrl: string;
   name: string;
+  price: number;
   onClickAdd?: VoidFunction;
   className?: string;
 }
 
 export const ChooseProductForm: React.FC<Props> = ({
-  name,
   imageUrl,
+  name,
+  price,
   onClickAdd,
   className,
 }) => {
@@ -36,7 +38,7 @@ export const ChooseProductForm: React.FC<Props> = ({
         <p className="text-gray-400">Details...</p>
 
         <Button className="h-[55px] w-full rounded-[18px] px-10 text-base mt-10">
-          Добавить в корзину за ₽
+          Добавить в корзину за {price} ₽
         </Button>
       </div>
     </div>

@@ -11,6 +11,9 @@ export async function GET(request: NextRequest) {
         mode: "insensitive",
       },
     },
+    include: {
+      items: true,
+    },
     take: 5,
   });
 

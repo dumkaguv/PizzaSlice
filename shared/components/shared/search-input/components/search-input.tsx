@@ -1,24 +1,18 @@
 "use client";
 
-import { cn } from "@/shared/lib/utils";
-import { Search } from "lucide-react";
 import React from "react";
-import useDebounce from "react-use/lib/useDebounce";
+import { Search } from "lucide-react";
 
+import { cn } from "@/shared/lib/utils";
 import { Input } from "@/shared/components/ui";
-import Link from "next/link";
-import Image from "next/image";
-import { Api } from "@/shared/services/api-client";
-import { Product } from "@prisma/client";
-import { useInputSearch } from "@/shared/hooks";
+import { useInputSearch, useInputSearchState } from "../hooks";
+import { SearchInputItem } from "./search-input-item";
 
 interface Props {
   className?: string;
 }
 
 export const SearchInput: React.FC<Props> = ({ className }) => {
-  const [products, setProducts] = React.useState<Product[]>([]);
-  const [isLoading, setIsLoading] = React.useState(true);
   const inputDivRef = React.useRef(null);
 
   const {
@@ -32,25 +26,12 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
     onIconClearClick,
   } = useInputSearch(inputDivRef);
 
+  const { products, isLoading } = useInputSearchState(searchQuery);
+
   const onLinkClick = () => {
     setSearchQuery("");
     setIsFocused(false);
   };
-
-  useDebounce(
-    async () => {
-      try {
-        setIsLoading(true);
-        setProducts(await Api.products.search(searchQuery));
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    250,
-    [searchQuery],
-  );
 
   return (
     <>
@@ -91,16 +72,12 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
             </div>
           ) : products.length > 0 ? (
             products.map((product) => (
-              <Link
+              <SearchInputItem
                 key={product.productId}
-                onClick={onLinkClick}
-                href={`/product/${product.productId}`}
-                className="hover:bg-primary/10 flex cursor-pointer items-center gap-3 px-3 py-2"
-              >
-                <Image src={product.imageUrl} width={40} height={40} alt="" />
-                <span>{product.name}</span>
-                <span className="text-sm"></span>
-              </Link>
+                product={product}
+                onLinkClick={onLinkClick}
+                searchQuery={searchQuery}
+              />
             ))
           ) : searchQuery ? (
             <div className="p-5 text-center">
