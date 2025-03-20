@@ -37,11 +37,12 @@ export const ProductGroupVariants: React.FC<Props> = ({
             "hover:text-primary/90 flex h-[30px] flex-1 cursor-pointer items-center justify-center rounded-3xl px-5 text-sm transition-all duration-300 hover:bg-gray-100/60",
             {
               "bg-white shadow": item.value === selectedValue,
-              "pointer-events-none text-gray-500 opacity-50": item.disabled,
+              "pointer-events-none text-gray-500 opacity-50 cursor-not-allowed": item.disabled,
             },
             className,
           )}
           type="button"
+          tabIndex={item.disabled ? -1 : 0}
         >
           {item.text}
         </button>
