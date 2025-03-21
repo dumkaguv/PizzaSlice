@@ -3,8 +3,14 @@
 import React, { useEffect } from "react";
 import { Ingredient as IngredientType, ProductItem } from "@prisma/client";
 
-import { cn, calcTotalPizzaPrice } from "@/shared/lib";
-import { Ingredient, PizzaImage, ProductGroupVariants, Title } from ".";
+import { cn } from "@/shared/lib";
+import { calcTotalPizzaPrice } from "../lib";
+import {
+  Ingredient,
+  PizzaImage,
+  ProductGroupVariants,
+  Title,
+} from "@/shared/components/shared";
 import { Button } from "@/shared/components/ui";
 import {
   mapPizzaType,
@@ -12,7 +18,7 @@ import {
   PizzaSize,
   PizzaType,
 } from "@/shared/constants/pizza";
-import { usePizzaOptions } from "@/shared/hooks";
+import { usePizzaOptions } from "../hooks";
 
 interface Props {
   imageUrl: string;
@@ -70,7 +76,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setSize((prevSize) => { 
+    setSize((prevSize) => {
       return availablePizzas.some((pizza) => prevSize === pizza.size)
         ? prevSize
         : (availablePizzas[0].size as PizzaSize);

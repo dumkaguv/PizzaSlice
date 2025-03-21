@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import { cn } from "@/shared/lib/utils";
-import { Title } from ".";
+import { Title } from "@/shared/components/shared";
 import { Button } from "@/shared/components/ui";
 
 interface Props {

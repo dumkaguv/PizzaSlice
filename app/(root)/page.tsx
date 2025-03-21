@@ -7,7 +7,7 @@ import {
   ProductsGroupList,
 } from "@/shared/components/shared";
 
-import { Filters } from "@/shared/components/shared/filters";
+import { Filters } from "@/shared/components/shared/filters/components/filters";
 import { prisma } from "@/prisma/prisma-client";
 
 export default async function Home() {

@@ -1,20 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { FC, useLayoutEffect } from "react";
 
 import { cn } from "@/shared/lib/utils";
-import { Categories, Container, SortPopup } from ".";
+import { Categories, Container, SortPopup } from "@/shared/components/shared";
 import { Category } from "@prisma/client";
-import { defineTopBarHeight } from "@/shared/lib/utils";
+import { defineTopBarHeight } from "../lib";
 
 interface Props {
   categories: Category[];
   className?: string;
 }
 
-export const TopBar: React.FC<Props> = ({ className, categories }) => {
+export const TopBar: FC<Props> = ({ className, categories }) => {
   
-  React.useEffect(() => {
+  useLayoutEffect(() => {
     defineTopBarHeight();
   }, []);
 

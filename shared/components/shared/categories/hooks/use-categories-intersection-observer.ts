@@ -40,8 +40,6 @@ export const useCategoriesIntersectionObserver = ({ categories }: Props) => {
 
     categoryElements.forEach((el) => observer.observe(el));
 
-    categoryElements.forEach((el) => observer.observe(el));
-
     return () => {
       categoryElements.forEach((el) => observer.unobserve(el));
     };

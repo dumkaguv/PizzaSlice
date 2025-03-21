@@ -5,7 +5,7 @@ import React from "react";
 import { Dialog, DialogContent } from "@/shared/components/ui/dialog";
 import { cn } from "@/shared/lib/utils";
 import { useRouter } from "next/navigation";
-import { ChoosePizzaForm, ChooseProductForm } from "..";
+import { ChoosePizzaForm, ChooseProductForm } from "@/shared/components/shared";
 import { ProductWithRelations } from "@/@types/prisma";
 
 interface Props {

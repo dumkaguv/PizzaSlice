@@ -2,10 +2,14 @@
 
 import React from "react";
 
-import { Title, RangeSlider, CheckboxFiltersGroup } from ".";
-import { PIZZA_TYPES, PIZZA_SIZES } from "@/shared/constants/pizza"
+import {
+  Title,
+  RangeSlider,
+  CheckboxFiltersGroup,
+} from "@/shared/components/shared";
+import { PIZZA_TYPES, PIZZA_SIZES } from "@/shared/constants/pizza";
 import { Input } from "@/shared/components/ui";
-import { useFilters, useIngredients, useQueryFilters } from "@/shared/hooks";
+import { useFilters, useIngredients, useQueryFilters } from "@/shared/components/shared/filters/hooks";
 
 interface Props {
   className?: string;

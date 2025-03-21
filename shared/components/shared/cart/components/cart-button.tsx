@@ -2,7 +2,7 @@ import React from "react";
 import { ArrowRight, ShoppingCart } from "lucide-react";
 
 import { Button } from "@/shared/components/ui";
-import { CartDrawer } from "./cart-drawer";
+import { CartDrawer } from "@/shared/components/shared";
 
 interface Props {
   className?: string;
@@ -10,7 +10,7 @@ interface Props {
 
 export const CartButton: React.FC<Props> = ({ className }) => {
   return (
-    <CartDrawer>
+    <CartDrawer className={className}>
       <Button className="group relative">
         <b>0 ₽</b>
         <span className="mx-3 h-full w-[1px] bg-white/30" />

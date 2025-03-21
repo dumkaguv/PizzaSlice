@@ -2,21 +2,23 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 
-import { Title } from ".";
+import { Title } from "@/shared/components/shared";
 import { Button } from "@/shared/components/ui";
 import { Plus } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
+import { Ingredient } from "@prisma/client";
 
 interface Props {
   id: number;
   name: string;
   price: number;
   imageUrl: string;
+  ingredients?: Ingredient[];
   className?: string;
 }
 
 export const ProductCard: React.FC<Props> = ({ ...props }) => {
-  const { id, name, price, imageUrl, className } = props;
+  const { id, name, price, imageUrl, ingredients, className } = props;
 
   return (
     <div
@@ -38,7 +40,9 @@ export const ProductCard: React.FC<Props> = ({ ...props }) => {
 
         <Title text={name} size="sm" className="mt-3 mb-1 font-bold" />
 
-        <p className="text-sm text-gray-400">Ингридиенты</p>
+        <p className="text-sm text-gray-400">
+          {ingredients?.map((ingredient) => ingredient.name).join(", ")}
+        </p>
 
         <div className="mt-4 flex justify-between self-end">
           <span className="text-[20px]">

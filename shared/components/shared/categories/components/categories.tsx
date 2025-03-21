@@ -3,7 +3,7 @@
 import React from "react";
 
 import { cn } from "@/shared/lib/utils";
-import { useCategoriesIntersectionObserver } from "@/shared/hooks";
+import { useCategoriesIntersectionObserver } from "../hooks";
 import { Category } from "@prisma/client";
 
 interface Props {
