@@ -28,6 +28,11 @@ export const Ingredient: React.FC<Props> = ({
         className,
       )}
       onClick={onClick}
+      role="button"
+      onKeyDown={(event) => {
+        if (event.key === "Enter") onClick?.();
+      }}
+      tabIndex={0}
     >
       {active && (
         <CircleCheck className="text-primary absolute top-2 right-2" />
