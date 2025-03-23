@@ -7,6 +7,8 @@ import { CountButton } from "@/shared/components/shared";
 import { Trash2Icon } from "lucide-react";
 
 interface Props extends CartItemProps {
+  onCountButtonClick?: (type: "plus" | "minus") => void;
+  onRemoveItemClick?: () => void;
   className?: string;
 }
 
@@ -17,6 +19,8 @@ export const CartDrawerItem: React.FC<Props> = ({
   price,
   quantity,
   details,
+  onCountButtonClick,
+  onRemoveItemClick,
   className,
 }) => {
   return (
@@ -29,14 +33,18 @@ export const CartDrawerItem: React.FC<Props> = ({
         <hr className="my-3" />
 
         <div className="flex items-center justify-between">
-          <CountButton onClick={(type) => console.log(type)} value={quantity} />
+          <CountButton onClick={onCountButtonClick} value={quantity} />
 
           <div className="flex items-center gap-3">
             <CartItem.Price price={price} />
             <Trash2Icon
               tabIndex={0}
               size={16}
-              className="cursor-pointer text-gray-400 hover:text-gray-600 duration-200"
+              className="cursor-pointer text-gray-400 duration-200 hover:text-gray-600"
+              onClick={onRemoveItemClick}
+              onKeyDown={(event) =>
+                event.key === "Enter" && onRemoveItemClick?.()
+              }
             />
           </div>
         </div>

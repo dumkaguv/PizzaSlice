@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import {
   Container,
@@ -37,7 +37,9 @@ export default async function Home() {
       <Container className="my-14">
         <div className="flex gap-[110px]">
           <div className="w-[250px]">
-            <Filters />
+            <Suspense>
+              <Filters />
+            </Suspense>
           </div>
 
           <div className="flex-1">

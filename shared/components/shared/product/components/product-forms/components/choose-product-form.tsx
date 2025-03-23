@@ -9,6 +9,7 @@ interface Props {
   imageUrl: string;
   name: string;
   price: number;
+  isLoading?: boolean;
   onClickAdd?: VoidFunction;
   className?: string;
 }
@@ -17,6 +18,7 @@ export const ChooseProductForm: React.FC<Props> = ({
   imageUrl,
   name,
   price,
+  isLoading,
   onClickAdd,
   className,
 }) => {
@@ -37,7 +39,11 @@ export const ChooseProductForm: React.FC<Props> = ({
 
         <p className="text-gray-400">Details...</p>
 
-        <Button className="h-[55px] w-full rounded-[18px] px-10 text-base mt-10">
+        <Button
+          isLoading={isLoading}
+          onClick={() => onClickAdd?.()}
+          className="mt-10 h-[55px] w-full rounded-[18px] px-10 text-base"
+        >
           Добавить в корзину за {price} ₽
         </Button>
       </div>

@@ -99,7 +99,7 @@ model Cart {
 model CartItem {
     cartItemId Int @id @default(autoincrement())
 
-    quantity       Int
+    quantity       Int @default(1)
     cartRef        Int
     productItemRef Int
 
