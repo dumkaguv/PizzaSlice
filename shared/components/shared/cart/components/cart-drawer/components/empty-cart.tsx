@@ -30,7 +30,7 @@ export const EmptyCart: React.FC<Props> = ({ className }) => {
       <p className="mb-10 w-[285px] text-center opacity-40">
         Добавьте хотя бы одну пиццу, чтобы совершить заказ
       </p>
-      <DrawerClose>
+      <DrawerClose asChild>
         <Button size={"xl"} className="rounded-2xl text-base font-bold">
           <MoveLeft size={24} className="mr-2.5" />
           Вернуться назад

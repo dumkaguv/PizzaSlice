@@ -1,5 +1,3 @@
-import { ingredients } from "./../../../prisma/constants";
-import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 import {
   Cart,
   CartItem,

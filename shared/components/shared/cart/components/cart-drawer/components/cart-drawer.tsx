@@ -32,6 +32,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
   const {
     items,
     totalAmount,
+    isLoading,
     fetchCartItems,
     updateItemQuantity,
     removeCartItem,
@@ -39,6 +40,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
     useShallow((state) => ({
       items: state.items,
       totalAmount: state.totalAmount,
+      isLoading: state.isLoading,
       fetchCartItems: state.fetchCartItems,
       updateItemQuantity: state.updateItemQuantity,
       removeCartItem: state.removeCartItem,
@@ -75,7 +77,8 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                 В корзине{" "}
                 <span className="font-bold">
                   {items.length} {getCorrectEnding(items.length, "товар")}
-                </span>
+                </span>{" "}
+                на <span className="font-bold">{totalAmount} ₽</span>
               </>
             )}
           </SheetTitle>
@@ -91,6 +94,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                 name={item.name}
                 price={item.price}
                 quantity={item.quantity}
+                disabled={item.disabled}
                 details={
                   item.pizzaSize && item.pizzaType
                     ? getCartItemDetails(
@@ -124,7 +128,11 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
               </div>
 
               <Link href="/checkout">
-                <Button type="submit" className="h-12 w-full text-base">
+                <Button
+                  isLoading={isLoading}
+                  type="submit"
+                  className="h-12 w-full text-base"
+                >
                   Оформить заказ
                   <ArrowRight className="ml-2 w-5" />
                 </Button>

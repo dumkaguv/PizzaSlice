@@ -6,6 +6,7 @@ export { SortPopup } from "./sort-popup";
 export { RangeSlider } from "./range-slider";
 export { Ingredient } from "./ingredient";
 export { CountButton } from "./count-button";
+export { ProductForm } from "./product-form";
 
 export * from "./modals";
 export * from "./search-input";

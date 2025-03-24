@@ -1,7 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 
-import { Container, ProductGroupVariants, PizzaImage, Title } from "@/shared/components/shared";
+import { Container, ProductForm } from "@/shared/components/shared";
 import { prisma } from "@/prisma/prisma-client";
 
 interface ProductPageProps {
@@ -17,23 +17,28 @@ export default async function ProductPage({
     where: {
       productId: Number(id),
     },
+    include: {
+      ingredients: true,
+      category: {
+        include: {
+          products: {
+            include: {
+              items: true,
+            },
+          },
+        },
+      },
+      items: true,
+    },
   });
 
   if (!product) {
-    return notFound()
+    return notFound();
   }
 
   return (
-      <Container className="flex flex-col my-10">
-        <div className="flex flex-1">
-        <PizzaImage imageUrl={product.imageUrl} width={400} height={400} size={40} />
-        <div className="w-[490px] bg-[#FCFCFC] p-7">
-          <Title text={product.name} size="md" className="font-extrabold mb-1" />
-
-          <p className="text-gray-400">Details...</p>
-          <ProductGroupVariants items={[]} />
-        </div>
-        </div>
-      </Container>
+    <Container className="my-10 flex flex-col">
+      <ProductForm product={product} />
+    </Container>
   );
 }
