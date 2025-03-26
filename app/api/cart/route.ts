@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
     }
 
     const userCart = await findOrCreateCart(token);
-
+    console.log(data);
     // Костыль, потому что призма не могла нормально сравнить
     // по ингредиентам один и тот же товар...
     const findCartItems = await prisma.cartItem.findMany({
@@ -89,6 +89,7 @@ export async function POST(req: NextRequest) {
         const possibleItem = await prisma.cartItem.findFirst({
           where: {
             cartRef: userCart.cartId,
+            productItemRef: data.productItemId,
           },
           include: {
             ingredients: true,
@@ -97,14 +98,20 @@ export async function POST(req: NextRequest) {
         });
 
         if (
-          possibleItem?.productItem.pizzaType ===
-            cartItem?.productItem.pizzaType &&
-          possibleItem?.productItem.size === cartItem?.productItem.size
-        )
+          possibleItem &&
+          cartItem &&
+          possibleItem.productItem.productItemId === cartItem.productItemRef &&
+          possibleItem.productItem.pizzaType ===
+            cartItem.productItem.pizzaType &&
+          possibleItem.productItem.size === cartItem.productItem.size
+        ) {
           findCartItem = cartItem;
-        break;
+          break;
+        }
       }
     }
+
+    console.log(findCartItem);
 
     if (findCartItem) {
       await prisma.cartItem.update({

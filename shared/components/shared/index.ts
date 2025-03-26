@@ -7,6 +7,7 @@ export { RangeSlider } from "./range-slider";
 export { Ingredient } from "./ingredient";
 export { CountButton } from "./count-button";
 export { ProductForm } from "./product-form";
+export { WhiteBlock } from "./white-block";
 
 export * from "./modals";
 export * from "./search-input";
@@ -14,3 +15,4 @@ export * from "./filters";
 export * from "./product";
 export * from "./top-bar";
 export * from "./cart";
+export * from "./checkout";
