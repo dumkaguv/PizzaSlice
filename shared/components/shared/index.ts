@@ -8,6 +8,7 @@ export { Ingredient } from "./ingredient";
 export { CountButton } from "./count-button";
 export { ProductForm } from "./product-form";
 export { WhiteBlock } from "./white-block";
+export { RequiredSymbol } from "./required-symbol";
 
 export * from "./modals";
 export * from "./search-input";
@@ -16,3 +17,4 @@ export * from "./product";
 export * from "./top-bar";
 export * from "./cart";
 export * from "./checkout";
+export * from "./form";

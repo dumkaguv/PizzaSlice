@@ -1,20 +1,40 @@
 "use client";
 
+import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import {
-  CheckoutItem,
+  CheckoutAddressForm,
+  CheckoutCart,
+  CheckoutPersonalForm,
   CheckoutSidebar,
   Container,
   Title,
-  WhiteBlock,
 } from "@/shared/components/shared";
-import { getCartItemDetails } from "@/shared/components/shared/cart/lib";
-import { Input, Textarea } from "@/shared/components/ui";
-import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 import { useCart } from "@/shared/hooks";
+import {
+  checkoutFormSchema,
+  TCheckoutFormValues,
+} from "@/shared/components/shared/checkout/schemas";
 
 export default function CheckoutPage() {
   const { totalAmount, updateItemQuantity, items, removeCartItem, isLoading } =
     useCart();
+
+  const form = useForm<TCheckoutFormValues>({
+    resolver: zodResolver(checkoutFormSchema),
+    defaultValues: {
+      email: "",
+      firstName: "",
+      lastName: "",
+      address: "",
+      comment: "",
+    },
+  });
+
+  const onSubmit: SubmitHandler<CheckoutFormValues> = (data) => {
+    console.log(data);
+  };
 
   const onCountButtonClick = (
     id: number,
@@ -34,63 +54,30 @@ export default function CheckoutPage() {
         className="mb-8 !text-[36px] font-extrabold"
       />
 
-      <div className="flex gap-10">
-        <div className="mb-20 flex flex-1 flex-col gap-10">
-          <WhiteBlock title="1. Корзина" contentClassName="flex flex-col gap-5">
-            {items.map((item) => (
-              <CheckoutItem
-                key={item.id}
-                id={item.id}
-                imageUrl={item.imageUrl}
-                name={item.name}
-                price={item.price}
-                quantity={item.quantity}
-                details={getCartItemDetails(
-                  item.ingredients,
-                  item.pizzaType as PizzaType,
-                  item.pizzaSize as PizzaSize,
-                )}
-                disabled={item.disabled}
-                onCountButtonClick={(type) =>
-                  onCountButtonClick(item.id, item.quantity, type)
-                }
-                onRemoveItemClick={() => removeCartItem(item.id)}
+      <FormProvider {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <div className="flex gap-10">
+            <div className="mb-20 flex flex-1 flex-col gap-10">
+              <CheckoutCart
+                items={items}
+                onCountButtonClick={onCountButtonClick}
+                removeCartItem={removeCartItem}
               />
-            ))}
-          </WhiteBlock>
 
-          <WhiteBlock title="2. Персональные данные">
-            <div className="grid grid-cols-2 gap-5">
-              <Input name="firstName" className="text-base" placeholder="Имя" />
-              <Input
-                name="lastName"
-                className="text-base"
-                placeholder="Фамилия"
-              />
-              <Input name="email" className="text-base" placeholder="E-mail" />
-              <Input name="phone" className="text-base" placeholder="Телефон" />
+              <CheckoutPersonalForm />
+
+              <CheckoutAddressForm />
             </div>
-          </WhiteBlock>
 
-          <WhiteBlock title="3. Адрес доставки">
-            <div className="flex flex-col gap-5">
-              <Input name="firstName" className="text-base" placeholder="Имя" />
-              <Textarea
-                rows={5}
-                className="text-base"
-                placeholder="Комментарий к заказу"
+            <div className="w-[450px]">
+              <CheckoutSidebar
+                totalAmount={totalAmount}
+                isLoading={isLoading}
               />
             </div>
-          </WhiteBlock>
-        </div>
-
-        <div className="w-[450px]">
-          <CheckoutSidebar
-            totalAmount={totalAmount}
-            isLoading={isLoading}
-          />
-        </div>
-      </div>
+          </div>
+        </form>
+      </FormProvider>
     </Container>
   );
 }
