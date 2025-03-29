@@ -9,6 +9,7 @@ export { CountButton } from "./count-button";
 export { ProductForm } from "./product-form";
 export { WhiteBlock } from "./white-block";
 export { RequiredSymbol } from "./required-symbol";
+export { AddressInput } from "./address-input";
 
 export * from "./modals";
 export * from "./search-input";

@@ -2,7 +2,7 @@ import React from "react";
 
 import { CheckoutItemDetails, WhiteBlock } from "@/shared/components/shared";
 import { ArrowRight, Package, Truck } from "lucide-react";
-import { Button } from "@/shared/components/ui";
+import { Button, Skeleton } from "@/shared/components/ui";
 import { cn } from "@/shared/lib";
 
 const DELIVERY_PRICE = 100;
@@ -22,9 +22,13 @@ export const CheckoutSidebar: React.FC<Props> = ({
     <WhiteBlock className={cn("sticky top-4 p-6", className)}>
       <div className="flex flex-col gap-1">
         <span className="text-xl">Итого</span>
-        <span className="text-4xl font-extrabold">
-          {totalAmount + DELIVERY_PRICE} ₽
-        </span>
+        {isLoading ? (
+          <Skeleton className="h-10 w-36" />
+        ) : (
+          <span className="text-4xl font-extrabold">
+            {totalAmount + DELIVERY_PRICE} ₽
+          </span>
+        )}
       </div>
 
       <CheckoutItemDetails
@@ -34,7 +38,9 @@ export const CheckoutSidebar: React.FC<Props> = ({
             Стоимость корзины
           </div>
         }
-        value={`${totalAmount} ₽`}
+        value={
+          isLoading ? <Skeleton className="h-6 w-14" /> : `${totalAmount} ₽`
+        }
       />
       <CheckoutItemDetails
         title={
@@ -43,7 +49,9 @@ export const CheckoutSidebar: React.FC<Props> = ({
             Доставка
           </div>
         }
-        value={`${DELIVERY_PRICE} ₽`}
+        value={
+          isLoading ? <Skeleton className="h-6 w-12" /> : `${DELIVERY_PRICE} ₽`
+        }
       />
 
       <Button

@@ -16,6 +16,7 @@ import {
   checkoutFormSchema,
   TCheckoutFormValues,
 } from "@/shared/components/shared/checkout/schemas";
+import { cn } from "@/shared/lib";
 
 export default function CheckoutPage() {
   const { totalAmount, updateItemQuantity, items, removeCartItem, isLoading } =
@@ -32,7 +33,7 @@ export default function CheckoutPage() {
     },
   });
 
-  const onSubmit: SubmitHandler<CheckoutFormValues> = (data) => {
+  const onSubmit: SubmitHandler<TCheckoutFormValues> = (data) => {
     console.log(data);
   };
 
@@ -62,11 +63,16 @@ export default function CheckoutPage() {
                 items={items}
                 onCountButtonClick={onCountButtonClick}
                 removeCartItem={removeCartItem}
+                isLoading={isLoading}
               />
 
-              <CheckoutPersonalForm />
+              <CheckoutPersonalForm
+                className={cn({ "pointer-events-none opacity-40": isLoading })}
+              />
 
-              <CheckoutAddressForm />
+              <CheckoutAddressForm
+                className={cn({ "pointer-events-none opacity-40": isLoading })}
+              />
             </div>
 
             <div className="w-[450px]">
