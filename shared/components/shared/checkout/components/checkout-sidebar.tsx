@@ -26,7 +26,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
           <Skeleton className="h-10 w-36" />
         ) : (
           <span className="text-4xl font-extrabold">
-            {totalAmount + DELIVERY_PRICE} ₽
+            {totalAmount > 0 ? totalAmount + DELIVERY_PRICE : 0} ₽
           </span>
         )}
       </div>
@@ -57,7 +57,10 @@ export const CheckoutSidebar: React.FC<Props> = ({
       <Button
         type="submit"
         isLoading={isLoading}
-        className="mt-6 h-14 w-full rounded-2xl text-base font-bold"
+        className={cn(
+          "mt-6 h-14 w-full rounded-2xl text-base font-bold",
+          totalAmount === 0 && "pointer-events-none opacity-40",
+        )}
       >
         Перейти к оплате
         <ArrowRight size={20} className="ml-2" />

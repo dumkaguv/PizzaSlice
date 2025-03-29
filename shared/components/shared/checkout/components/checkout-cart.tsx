@@ -49,6 +49,7 @@ export const CheckoutCart: React.FC<Props> = ({
           <CheckoutItem
             key={item.id}
             id={item.id}
+            productId={item.productId}
             imageUrl={item.imageUrl}
             name={item.name}
             price={item.price}
@@ -65,6 +66,8 @@ export const CheckoutCart: React.FC<Props> = ({
             onRemoveItemClick={() => removeCartItem(item.id)}
           />
         ))}
+
+        {items.length === 0 && !showSkeletons && "Ваша корзина пуста. Добавьте продукты в корзину."}
     </WhiteBlock>
   );
 };

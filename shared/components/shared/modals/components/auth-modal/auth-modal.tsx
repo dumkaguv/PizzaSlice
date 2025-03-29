@@ -6,7 +6,7 @@ import { signIn } from "next-auth/react";
 import React, { useState } from "react";
 import Image from "next/image";
 import { Description } from "@radix-ui/react-dialog";
-import { LoginForm } from "./forms";
+import { LoginForm, RegisterForm } from "./forms";
 
 interface Props {
   open: boolean;
@@ -29,7 +29,11 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
       <DialogTitle className="hidden" />
       <Description className="hidden" />
       <DialogContent className="w-[450px] bg-white p-10">
-        {type === "login" ? <LoginForm onClose={handleClose} /> : <h1>REG</h1>}
+        {type === "login" ? (
+          <LoginForm onClose={handleClose} />
+        ) : (
+          <RegisterForm onClose={handleClose} />
+        )}
 
         <hr />
         <div className="flex gap-2">

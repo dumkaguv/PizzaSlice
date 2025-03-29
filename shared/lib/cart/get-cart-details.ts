@@ -3,6 +3,7 @@ import { calcCartItemTotalPrice } from "./calc-cart-item-total-price";
 
 export type CartStateItem = {
   id: number;
+  productId: number;
   quantity: number;
   name: string;
   imageUrl: string;
@@ -21,6 +22,7 @@ interface ReturnProps {
 export const getCartDetails = (data: CartDTO): ReturnProps => {
   const items = data.items.map((item) => ({
     id: item.cartItemId,
+    productId: item.productItem.product.productId,
     quantity: item.quantity,
     name: item.productItem.product.name,
     imageUrl: item.productItem.product.imageUrl,

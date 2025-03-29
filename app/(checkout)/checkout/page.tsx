@@ -19,6 +19,9 @@ import {
 import { cn } from "@/shared/lib";
 import { createOrder } from "@/app/actions";
 import toast from "react-hot-toast";
+import { Button } from "@/shared/components/ui";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function CheckoutPage() {
   const { totalAmount, updateItemQuantity, items, removeCartItem, isLoading } =
@@ -46,7 +49,6 @@ export default function CheckoutPage() {
       if (url) {
         location.href = url;
       }
-
     } catch (error) {
       toast.error("Не удалось создать заказ. Попробуйте еще раз.", {
         icon: "🚫",
@@ -67,6 +69,12 @@ export default function CheckoutPage() {
 
   return (
     <Container className="mt-10">
+      <Link href="/">
+        <Button className="mb-5" type="button">
+          <ArrowLeft size={18} className="mr-2" />
+          Вернуться на главную
+        </Button>
+      </Link>
       <Title
         text="Оформление заказа"
         size="xl"
@@ -85,11 +93,17 @@ export default function CheckoutPage() {
               />
 
               <CheckoutPersonalForm
-                className={cn({ "pointer-events-none opacity-40": isLoading })}
+                className={cn({
+                  "pointer-events-none opacity-40":
+                    isLoading || items.length === 0,
+                })}
               />
 
               <CheckoutAddressForm
-                className={cn({ "pointer-events-none opacity-40": isLoading })}
+                className={cn({
+                  "pointer-events-none opacity-40":
+                    isLoading || items.length === 0,
+                })}
               />
             </div>
 

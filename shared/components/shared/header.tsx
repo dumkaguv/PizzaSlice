@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface Props {
   hasSearch?: boolean;
@@ -26,18 +27,28 @@ export const Header: React.FC<Props> = ({
   hasCartButton = true,
   className,
 }) => {
+  const router = useRouter();
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    let toastMessage = "";
+
     if (searchParams.has("paid")) {
-      setTimeout(
-        () =>
-          toast.success(
-            "Заказ успешно оплачен! Информация отправлена на почту.",
-          ),
-        500,
-      );
+      toastMessage = "Ваш заказ успешно оплачен!";
+    }
+
+    if (searchParams.has("verified")) {
+      toastMessage = "Ваш аккаунт успешно подтвержден!";
+    }
+
+    if (toastMessage) {
+      setTimeout(() => {
+        router.replace("/");
+        toast.success(toastMessage, {
+          duration: 3000,
+        });
+      }, 700);
     }
   }, []);
 
@@ -69,7 +80,7 @@ export const Header: React.FC<Props> = ({
             open={openAuthModal}
             onClose={() => setOpenAuthModal(false)}
           />
-          
+
           <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
 
           {hasCartButton && <CartButton />}
