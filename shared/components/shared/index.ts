@@ -19,3 +19,4 @@ export * from "./top-bar";
 export * from "./cart";
 export * from "./checkout";
 export * from "./form";
+export * from "./email-templates";

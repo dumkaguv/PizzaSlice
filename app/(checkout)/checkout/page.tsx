@@ -17,6 +17,8 @@ import {
   TCheckoutFormValues,
 } from "@/shared/components/shared/checkout/schemas";
 import { cn } from "@/shared/lib";
+import { createOrder } from "@/app/actions";
+import toast from "react-hot-toast";
 
 export default function CheckoutPage() {
   const { totalAmount, updateItemQuantity, items, removeCartItem, isLoading } =
@@ -33,8 +35,24 @@ export default function CheckoutPage() {
     },
   });
 
-  const onSubmit: SubmitHandler<TCheckoutFormValues> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<TCheckoutFormValues> = async (data) => {
+    try {
+      const url = await createOrder(data);
+
+      toast.success("Заказ успешно создан! Переход на оплату...", {
+        icon: "🎉",
+      });
+
+      if (url) {
+        location.href = url;
+      }
+
+    } catch (error) {
+      toast.error("Не удалось создать заказ. Попробуйте еще раз.", {
+        icon: "🚫",
+      });
+      console.error(error);
+    }
   };
 
   const onCountButtonClick = (

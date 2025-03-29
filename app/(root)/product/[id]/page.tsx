@@ -10,9 +10,9 @@ interface ProductPageProps {
   };
 }
 
-export default async function ProductPage({
-  params: { id },
-}: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params;
+  
   const product = await prisma.product.findFirst({
     where: {
       productId: Number(id),

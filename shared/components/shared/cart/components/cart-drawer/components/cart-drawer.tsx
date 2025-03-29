@@ -19,6 +19,7 @@ import { getCartItemDetails } from "../../../lib";
 import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 import { EmptyCart } from "./empty-cart";
 import { useCart } from "@/shared/hooks";
+import { Description } from "@radix-ui/react-dialog";
 
 interface Props {
   className?: string;
@@ -51,6 +52,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
           "flex flex-col justify-between bg-[#F4F1EE] pb-0",
         )}
       >
+        <Description />
         <SheetHeader>
           <SheetTitle>
             {items.length > 0 && (

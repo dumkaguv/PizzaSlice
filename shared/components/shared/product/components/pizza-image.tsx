@@ -28,6 +28,7 @@ export const PizzaImage: React.FC<Props> = ({
       )}
     >
       <Image
+        priority
         src={imageUrl}
         width={width}
         height={height}

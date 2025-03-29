@@ -7,6 +7,7 @@ import { cn } from "@/shared/lib/utils";
 import { useRouter } from "next/navigation";
 import { ProductForm } from "@/shared/components/shared";
 import { ProductWithRelations } from "@/@types/prisma";
+import { Description } from "@radix-ui/react-dialog";
 
 interface Props {
   product: ProductWithRelations;
@@ -24,8 +25,9 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
           className,
         )}
       >
-        <DialogTitle className="h-[0.1px] w-[0.1px]" />
+        <DialogTitle className="h-[0.1px] w-[0.1px] hidden" />
         <ProductForm product={product} onSubmit={() => router.back()} />
+        <Description className="h-[0.1px] w-[0.1px] hidden" />
       </DialogContent>
     </Dialog>
   );
