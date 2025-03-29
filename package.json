@@ -35,6 +35,8 @@
     "lodash.throttle": "^4.1.1",
     "lucide-react": "^0.476.0",
     "next": "15.2.1-canary.1",
+    "next-auth": "^4.24.11",
+    "nextjs-toploader": "^3.8.16",
     "prisma": "^6.4.1",
     "qs": "^6.14.0",
     "react": "^19.0.0",

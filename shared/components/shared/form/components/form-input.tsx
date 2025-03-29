@@ -10,6 +10,7 @@ import { useFormContext } from "react-hook-form";
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label?: string;
+  type?: string;
   required?: boolean;
   className?: string;
 }
@@ -18,6 +19,7 @@ export const FormInput: React.FC<Props> = ({
   name,
   label,
   required,
+  type,
   className,
   ...props
 }) => {
@@ -37,7 +39,7 @@ export const FormInput: React.FC<Props> = ({
       )}
 
       <div className="relative">
-        <Input {...register(name)} className="text-md h-12" {...props} />
+        <Input type={type} {...register(name)} className="text-md h-12" {...props} />
       </div>
 
       {errorText && <ErrorText text={errorText} className="mt-2" />}
