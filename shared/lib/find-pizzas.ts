@@ -21,6 +21,8 @@ export const findPizzas = async (params: GetSearchParams) => {
   const minPrice = Number(params.priceFrom) || DEFAULT_MIN_PRICE;
   const maxPrice = Number(params.priceTo) || DEFAULT_MAX_PRICE;
 
+  const sortBy = params.sortBy;
+
   const categories = await prisma.category.findMany({
     include: {
       products: {
@@ -69,6 +71,21 @@ export const findPizzas = async (params: GetSearchParams) => {
       },
     },
   });
+
+  console.log(categories);
+
+  if (sortBy?.includes("price")) {
+    categories.forEach((category) => {
+      category.products.sort((a, b) => {
+        const aPrice = a.items[0].price;
+        const bPrice = b.items[0].price;
+
+        return sortBy === "-price" ? bPrice - aPrice : aPrice - bPrice;
+      });
+    });
+  }
+
+  console.log(categories, "AFTER SORT");
 
   return categories;
 };

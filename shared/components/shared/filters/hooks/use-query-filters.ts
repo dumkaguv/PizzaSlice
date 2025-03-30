@@ -14,7 +14,12 @@ export const useQueryFilters = (filters: Filters) => {
   useDebounce(
     () => {
       if (isMounted.current) {
+        const currentParams = qs.parse(window.location.search, {
+          ignoreQueryPrefix: true,
+        });
+
         const params = {
+          ...currentParams,
           ...filters.prices,
           pizzaTypes: Array.from(filters.pizzaTypes),
           sizes: Array.from(filters.sizes),

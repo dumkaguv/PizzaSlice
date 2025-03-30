@@ -2,7 +2,6 @@ export { Container } from "./container";
 export { Header } from "./header";
 export { Title } from "./title";
 export { Categories } from "./categories";
-export { SortPopup } from "./sort-popup";
 export { RangeSlider } from "./range-slider";
 export { Ingredient } from "./ingredient";
 export { CountButton } from "./count-button";
@@ -14,8 +13,10 @@ export { Providers } from "./providers";
 export { ProfileButton } from "./profile-button";
 export { InfoBlock } from "./info-block";
 export { ProfileForm } from "./profile-form";
+export { Stories } from "./stories";
 
 export * from "./modals";
+export * from "./sort-popup";
 export * from "./search-input";
 export * from "./filters";
 export * from "./product";

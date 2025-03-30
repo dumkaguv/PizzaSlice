@@ -5,6 +5,7 @@ import {
   Title,
   TopBar,
   ProductsGroupList,
+  Stories,
 } from "@/shared/components/shared";
 
 import { Filters } from "@/shared/components/shared/filters/components/filters";
@@ -15,7 +16,7 @@ export default async function Home({
 }: {
   searchParams: GetSearchParams;
 }) {
-  const categories = await findPizzas(await searchParams)
+  const categories = await findPizzas(await searchParams);
 
   return (
     <>
@@ -30,6 +31,7 @@ export default async function Home({
       />
 
       <Container className="my-14">
+        <Stories />
         <div className="flex gap-[110px]">
           <div className="w-[250px]">
             <Suspense>

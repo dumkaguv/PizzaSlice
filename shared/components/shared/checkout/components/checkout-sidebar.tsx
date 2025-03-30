@@ -54,6 +54,10 @@ export const CheckoutSidebar: React.FC<Props> = ({
         }
       />
 
+      <div className="text-red-500">
+        Внимание! Это тестовая оплата и деньги не будут списаны, можно использовать карту <span className="text-red-600 font-extrabold">5555 5555 5555
+        4444</span> для проверки. Для остальных полей (CVV, месяц, год) можно заполнять, что угодно.
+      </div>
       <Button
         type="submit"
         isLoading={isLoading}
