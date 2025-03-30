@@ -6,6 +6,7 @@ import {
   TopBar,
   ProductsGroupList,
   Stories,
+  SearchInput,
 } from "@/shared/components/shared";
 
 import { Filters } from "@/shared/components/shared/filters/components/filters";
@@ -20,8 +21,10 @@ export default async function Home({
 
   return (
     <>
-      <Container className="mt-10">
+      <Container className="mt-10 max-xl:mt-5">
         <Title text="Все пиццы" size="lg" className="font-extrabold" />
+
+        <SearchInput className="mt-3" />
       </Container>
 
       <TopBar
@@ -30,9 +33,9 @@ export default async function Home({
         )}
       />
 
-      <Container className="my-14">
+      <Container className="my-14 max-xl:my-5">
         <Stories />
-        <div className="flex gap-[110px]">
+        <div className="md:flex gap-[110px] max-xl:gap-[95px]">
           <div className="w-[250px]">
             <Suspense>
               <Filters />

@@ -15,7 +15,7 @@ export const SkeletonCheckboxFiltersGroup: React.FC<Props> = ({ title, limit = 5
       <Title text={title} size="xs" className="mb-3 font-bold" />
 
       {new Array(limit).fill(null).map((_, index) => (
-        <Skeleton key={index} className="mb-4 h-6 rounded-lg" />
+        <Skeleton key={index} className="mb-4 h-6 rounded-lg w-[225px]" />
       ))}
       <Skeleton className="mb-4 h-6 w-28 rounded-lg" />
     </div>

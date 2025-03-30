@@ -16,7 +16,10 @@ export const Categories: React.FC<Props> = ({ className, categories }) => {
 
   return (
     <div
-      className={cn("inline-flex gap-1 rounded-2xl bg-gray-50 p-1", className)}
+      className={cn(
+        "inline-flex max-w-[550px] gap-1 overflow-x-auto rounded-2xl bg-gray-50 p-1",
+        className,
+      )}
     >
       {categories.map((category, index) => (
         <a

@@ -19,7 +19,7 @@ export const ProductsGroupList: React.FC<Props> = ({ ...props }) => {
     <div id={`category-${categoryId}`} className={className}>
       <Title text={title} size="lg" className="mb-5 font-extrabold" />
 
-      <ul className={cn("grid grid-cols-3 gap-10", listClassName)}>
+      <ul className={cn("grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-xl:gap-6 max-[900px]:!grid-cols-1", listClassName)}>
         {items.map((item) => (
           <li key={item.productId} className="flex flex-col">
             <ProductCard

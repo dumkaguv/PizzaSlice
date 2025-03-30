@@ -3,7 +3,6 @@
 import { Api } from "@/shared/services/api-client";
 import { IStory } from "@/shared/services/stories";
 import React from "react";
-import { Container } from "./container";
 import { cn } from "@/shared/lib/utils";
 import { X } from "lucide-react";
 import ReactStories from "react-insta-stories";
@@ -56,9 +55,9 @@ export const Stories: React.FC<Props> = ({ className }) => {
 
   return (
     <>
-      <Container
+      <div
         className={cn(
-          "my-10 flex items-center justify-between gap-2",
+          "my-10 mt-0 grid min-h-[250px] grid-cols-6 items-center justify-between gap-2 max-xl:my-5 max-xl:mb-10 overflow-x-auto overflow-y-hidden max-xl:flex",
           className,
         )}
       >
@@ -66,7 +65,7 @@ export const Stories: React.FC<Props> = ({ className }) => {
           [...Array(6)].map((_, index) => (
             <div
               key={index}
-              className="h-[250px] w-[200px] animate-pulse rounded-md bg-gray-200"
+              className="h-full w-full min-h-[250px] min-w-[200px] animate-pulse rounded-md bg-gray-200"
             />
           ))}
 
@@ -74,11 +73,15 @@ export const Stories: React.FC<Props> = ({ className }) => {
           <Image
             key={story.id}
             onClick={() => onClickStory(story, index)}
-            className="cursor-pointer rounded-md duration-200 hover:scale-[1.025]"
+            onKeyDown={(event) =>
+              event.key === "Enter" && onClickStory(story, index)
+            }
+            className="shrink-0 cursor-pointer rounded-md duration-200 hover:scale-[1.025]"
             height={250}
             width={200}
             src={story.previewImageUrl}
             alt=""
+            tabIndex={0}
           />
         ))}
 
@@ -91,6 +94,8 @@ export const Stories: React.FC<Props> = ({ className }) => {
               <button
                 className="absolute -top-5 -right-10 z-30"
                 onClick={() => setOpen(false)}
+                onKeyDown={(event) => event.key === "Enter" && setOpen(false)}
+                tabIndex={0}
               >
                 <X className="fixed top-0 right-0 h-8 w-8 text-white/50" />
               </button>
@@ -109,7 +114,7 @@ export const Stories: React.FC<Props> = ({ className }) => {
             </div>
           </div>
         )}
-      </Container>
+      </div>
     </>
   );
 };

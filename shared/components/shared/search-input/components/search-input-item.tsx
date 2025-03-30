@@ -29,12 +29,12 @@ export const SearchInputItem: React.FC<Props> = ({
       onClick={onLinkClick}
       href={`/product/${product.productId}`}
       className={cn(
-        "hover:bg-primary/10 flex cursor-pointer items-center gap-3 px-3 py-2",
+        "hover:bg-primary/10 flex cursor-pointer items-center gap-3 px-3 py-2 max-lg:gap-2 max-m",
         className,
       )}
     >
       <Image src={product.imageUrl} width={40} height={40} alt="" />
-      <span>
+      <span className="max-lg:text-sm">
         {start !== -1 ? (
           <>
             {product.name.slice(0, start)}
@@ -45,7 +45,7 @@ export const SearchInputItem: React.FC<Props> = ({
           product.name
         )}
       </span>
-      <span className="text-sm text-[#858585]">{product.items[0].price} ₽</span>
+      <span className="text-sm text-[#858585] whitespace-nowrap">{product.items[0].price} ₽</span>
     </Link>
   );
 };

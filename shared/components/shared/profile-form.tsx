@@ -36,6 +36,7 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
       await updateUserInfo({
         email: data.email,
         fullName: data.fullName,
+        verifiedAt: new Date(),
         password: data.password,
       });
 
@@ -65,11 +66,19 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
 
       <FormProvider {...form}>
         <form
-          className="mt-10 flex w-96 flex-col gap-5"
+          className="mt-10 flex w-96 flex-col gap-5 max-md:w-[340px]"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <FormInput name="email" label="E-Mail" required />
-          <FormInput name="fullName" label="Полное имя" required />
+          <FormInput
+            name="email"
+            label="E-Mail"
+            required
+          />
+          <FormInput
+            name="fullName"
+            label="Полное имя"
+            required
+          />
 
           <FormInput
             type="password"

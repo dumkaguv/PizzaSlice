@@ -49,7 +49,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
       <SheetContent
         className={cn(
           className,
-          "flex flex-col justify-between bg-[#F4F1EE] pb-0",
+          "flex flex-col justify-between bg-[#F4F1EE] pb-0 max-sm",
         )}
       >
         <Description />
@@ -72,6 +72,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
             {items.map((item) => (
               <CartDrawerItem
                 key={item.id}
+                productId={item.productId}
                 id={item.id}
                 imageUrl={item.imageUrl}
                 name={item.name}
@@ -95,7 +96,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
         )}
 
         {items.length > 0 && (
-          <SheetFooter className="bg-white p-8">
+          <SheetFooter className="bg-white p-8 max-sm:p-5">
             <div className="w-full">
               <div className="mb-4 flex">
                 <span className="flex flex-1 text-lg text-neutral-500">

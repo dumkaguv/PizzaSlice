@@ -26,7 +26,7 @@ export const CartDrawerItem: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "flex items-center gap-6 bg-white p-5",
+        "flex items-center gap-6 bg-white p-5 max-sm:gap-0 max-sm:p-3.5",
         {
           "pointer-events-none opacity-50": disabled,
         },
@@ -43,7 +43,7 @@ export const CartDrawerItem: React.FC<Props> = ({
         <div className="flex items-center justify-between">
           <CountButton onClick={onCountButtonClick} value={quantity} />
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 max-sm:gap-2.5">
             <CartItem.Price price={price} />
             <Trash2Icon
               tabIndex={0}

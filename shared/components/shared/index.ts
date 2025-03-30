@@ -1,5 +1,4 @@
 export { Container } from "./container";
-export { Header } from "./header";
 export { Title } from "./title";
 export { Categories } from "./categories";
 export { RangeSlider } from "./range-slider";
@@ -25,3 +24,4 @@ export * from "./cart";
 export * from "./checkout";
 export * from "./form";
 export * from "./email-templates";
+export * from "./header";

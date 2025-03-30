@@ -30,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({ ...props }) => {
       <Link className="grid min-h-full" href={`/product/${id}`}>
         <div className="bg-secondary flex h-[260px] justify-center rounded-lg p-6">
           <Image
-            className="h-[215px] w-[215px]"
+            className="shrink-0 h-[215px] w-[215px]"
             width={215}
             height={215}
             src={imageUrl}

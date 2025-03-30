@@ -1,8 +1,11 @@
+"use client";
+
 import { useSession } from "next-auth/react";
 import React from "react";
 import { Button } from "../ui/button";
 import { CircleUser, User } from "lucide-react";
 import Link from "next/link";
+import { useWindowSize } from "react-use";
 
 interface Props {
   onClickSignIn?: () => void;
@@ -14,6 +17,9 @@ export const ProfileButton: React.FC<Props> = ({
   onClickSignIn,
 }) => {
   const { data: session } = useSession();
+  const width = useWindowSize().width;
+
+  console.log(width)
 
   return (
     <div className={className}>
@@ -21,16 +27,16 @@ export const ProfileButton: React.FC<Props> = ({
         <Button
           onClick={onClickSignIn}
           variant="outline"
-          className="flex items-center gap-1"
+          className="flex items-center gap-1 max-md:px-2.5"
         >
           <User size={16} />
-          Войти
+          {width > 500 && "Войти"}
         </Button>
       ) : (
         <Link href="/profile">
-          <Button variant="secondary" className="flex items-center gap-2">
+          <Button variant="secondary" className="flex items-center gap-2 max-md:px-2.5">
             <CircleUser size={18} />
-            Профиль
+            {width > 500 && "Профиль"}
           </Button>
         </Link>
       )}
