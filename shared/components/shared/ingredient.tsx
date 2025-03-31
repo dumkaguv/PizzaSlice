@@ -23,7 +23,7 @@ export const Ingredient: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "relative flex w-32 cursor-pointer flex-col items-center rounded-md bg-white p-1 text-center shadow-md transition-transform duration-200 hover:scale-[1.025]",
+        "relative flex sm:w-32 cursor-pointer flex-col items-center rounded-md bg-white p-1 text-center shadow-md transition-transform duration-200 hover:scale-[1.025]",
         { "border-primary border": active },
         className,
       )}

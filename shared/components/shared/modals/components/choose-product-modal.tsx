@@ -2,7 +2,11 @@
 
 import React from "react";
 
-import { Dialog, DialogContent, DialogTitle } from "@/shared/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/shared/components/ui/dialog";
 import { cn } from "@/shared/lib/utils";
 import { useRouter } from "next/navigation";
 import { ProductForm } from "@/shared/components/shared";
@@ -21,13 +25,13 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
       <DialogContent
         className={cn(
-          "min-h-[500px] w-5xl !max-w-5xl overflow-hidden bg-white p-0",
+          "!max-w-5xl overflow-auto bg-white p-0 max-h-[95dvh] h-[100%]",
           className,
         )}
       >
-        <DialogTitle className="h-[0.1px] w-[0.1px] hidden" />
+        <DialogTitle className="hidden h-[0.1px] w-[0.1px]" />
         <ProductForm product={product} onSubmit={() => router.back()} />
-        <Description className="h-[0.1px] w-[0.1px] hidden" />
+        <Description className="hidden h-[0.1px] w-[0.1px]" />
       </DialogContent>
     </Dialog>
   );

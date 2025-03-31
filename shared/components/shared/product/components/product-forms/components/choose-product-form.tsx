@@ -23,21 +23,21 @@ export const ChooseProductForm: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <div className={cn("flex flex-1", className)}>
+    <div className={cn("flex lg:flex-1 max-lg:flex-col max-lg:items-center", className)}>
       <div className="relative flex w-full flex-1 items-center justify-center">
         <Image
           src={imageUrl}
           width={250}
           height={250}
           alt=""
-          className="relative top-2 left-2 z-10 h-[350px] w-[350px] transition-all duration-300"
+          className="relative max-md:h-[280px] max-md:w-[280px] top-2 left-2 z-10 h-[350px] w-[350px] transition-all duration-300"
         />
       </div>
 
-      <div className="w-[490px] bg-[#FCFCFC] p-7">
-        <Title text={name} size="md" className="mb-1 font-extrabold" />
+      <div className="w-[490px] max-md:w-[360px] bg-[#FCFCFC] p-7 max-md:p-4">
+        <Title text={name} size="md" className="mb-1 font-extrabold max-md:text-[22px]" />
 
-        <p className="text-gray-400">Details...</p>
+        <p className="text-gray-400 max-md:text-[14px]">Details...</p>
 
         <Button
           isLoading={isLoading}

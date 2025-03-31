@@ -90,14 +90,14 @@ export const Stories: React.FC<Props> = ({ className }) => {
             onClick={(event) => onOutsideCloseClick(event)}
             className="fixed top-0 left-0 z-30 flex h-full w-full items-center justify-center bg-black/80"
           >
-            <div className="relative !w-[520px]">
+            <div className="relative">
               <button
                 className="absolute -top-5 -right-10 z-30"
                 onClick={() => setOpen(false)}
                 onKeyDown={(event) => event.key === "Enter" && setOpen(false)}
                 tabIndex={0}
               >
-                <X className="fixed top-0 right-0 h-8 w-8 text-white/50" />
+                <X className="fixed top-1.5 right-1 h-8 w-8 text-white/50" />
               </button>
 
               <ReactStories
@@ -108,8 +108,6 @@ export const Stories: React.FC<Props> = ({ className }) => {
                   })) || []
                 }
                 defaultInterval={3000}
-                width={520}
-                height={800}
               />
             </div>
           </div>

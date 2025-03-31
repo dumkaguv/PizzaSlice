@@ -27,7 +27,7 @@ export const EmptyCart: React.FC<Props> = ({ className }) => {
       />
 
       <Title text="Корзина пустая" size="sm" className="mb-1.5 font-bold" />
-      <p className="mb-10 w-[285px] text-center opacity-40">
+      <p className="mb-10 w-[265px] text-center opacity-40">
         Добавьте хотя бы одну пиццу, чтобы совершить заказ
       </p>
       <DrawerClose asChild>

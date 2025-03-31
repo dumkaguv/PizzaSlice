@@ -34,7 +34,7 @@ export const ProductGroupVariants: React.FC<Props> = ({
           key={item.text}
           onClick={() => onClick?.(item.value)}
           className={cn(
-            "hover:text-primary/90 flex h-[30px] flex-1 cursor-pointer items-center justify-center rounded-3xl px-5 text-sm transition-all duration-300 hover:bg-gray-100/60",
+            "hover:text-primary/90 flex h-[30px] flex-1 cursor-pointer items-center justify-center rounded-3xl px-5 text-sm transition-all duration-300 hover:bg-gray-100/60 max-md:px-2",
             {
               "bg-white shadow": item.value === selectedValue,
               "pointer-events-none text-gray-500 opacity-50 cursor-not-allowed": item.disabled,

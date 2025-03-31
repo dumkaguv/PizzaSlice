@@ -40,10 +40,10 @@ export const CartDrawerItem: React.FC<Props> = ({
 
         <hr className="my-3" />
 
-        <div className="flex items-center justify-between">
+        <div className="flex sm:items-center justify-between max-sm:gap-2">
           <CountButton onClick={onCountButtonClick} value={quantity} />
 
-          <div className="flex items-center gap-3 max-sm:gap-2.5">
+          <div className="flex items-center gap-3 max-sm:gap-2">
             <CartItem.Price price={price} />
             <Trash2Icon
               tabIndex={0}

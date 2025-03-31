@@ -24,16 +24,16 @@ export const InfoBlock: React.FC<Props> = ({
     <div
       className={cn(
         className,
-        "flex w-[840px] items-center justify-between gap-12",
+        "flex w-[840px] p-3 items-center justify-between gap-12 max-lg:w-[700px] max-lg:gap-6 max-md:flex-col-reverse max-md:gap-10 max-lg:pb-6 max-md:w-fit",
       )}
     >
       <div className="flex flex-col">
-        <div className="w-[445px]">
+        <div className="md:w-[445px]">
           <Title size="lg" text={title} className="font-extrabold" />
           <p className="text-lg text-gray-400">{text}</p>
         </div>
 
-        <div className="mt-11 flex gap-5">
+        <div className="mt-11 flex gap-5 max-md:mt-6">
           <Link href="/">
             <Button variant="outline" className="gap-2">
               <ArrowLeft />
@@ -51,7 +51,13 @@ export const InfoBlock: React.FC<Props> = ({
         </div>
       </div>
 
-      <Image src={imageUrl} alt={title} width={300} height={300} />
+      <Image
+        src={imageUrl}
+        className="h-auto max-lg:w-[230px]"
+        alt={title}
+        width={300}
+        height={300}
+      />
     </div>
   );
 };

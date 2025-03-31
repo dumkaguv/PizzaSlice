@@ -19,7 +19,7 @@ export const CountButton: React.FC<CountButtonProps> = ({
   return (
     <div
       className={cn(
-        "inline-flex items-center justify-between gap-3 max-sm:gap-2.5",
+        "inline-flex items-center sm:justify-between gap-3 max-sm:gap-2",
         className,
       )}
     >
