@@ -35,7 +35,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "lucide-react": "^0.476.0",
-    "next": "15.2.1-canary.1",
+    "next": "15.2.4",
     "next-auth": "^4.24.11",
     "nextjs-toploader": "^3.8.16",
     "prisma": "^6.4.1",
