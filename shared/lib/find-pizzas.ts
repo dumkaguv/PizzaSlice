@@ -72,8 +72,6 @@ export const findPizzas = async (params: GetSearchParams) => {
     },
   });
 
-  console.log(categories);
-
   if (sortBy?.includes("price")) {
     categories.forEach((category) => {
       category.products.sort((a, b) => {
@@ -84,8 +82,6 @@ export const findPizzas = async (params: GetSearchParams) => {
       });
     });
   }
-
-  console.log(categories, "AFTER SORT");
 
   return categories;
 };

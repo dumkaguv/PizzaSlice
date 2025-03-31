@@ -37,7 +37,6 @@ export const useCategoriesIntersectionObserver = ({ categories }: Props) => {
         );
       })
       .filter((el) => el !== null);
-
     categoryElements.forEach((el) => observer.observe(el));
 
     return () => {

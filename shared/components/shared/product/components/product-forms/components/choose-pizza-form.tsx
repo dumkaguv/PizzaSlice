@@ -74,7 +74,8 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setSize((prevSize) => {
+    // @ts-expect-error not a problem
+    setSize((prevSize: PizzaSize) => {
       return availablePizzas.some((pizza) => prevSize === pizza.size)
         ? prevSize
         : (availablePizzas[0].size as PizzaSize);
@@ -82,11 +83,20 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   }, [type]);
 
   return (
-    <div className={cn("flex lg:flex-1 max-lg:flex-col max-lg:items-center", className)}>
+    <div
+      className={cn(
+        "flex max-lg:flex-col max-lg:items-center lg:flex-1",
+        className,
+      )}
+    >
       <PizzaImage imageUrl={imageUrl} size={size} width={250} height={250} />
 
-      <div className="w-[490px] max-sm:w-[350px] bg-[#FCFCFC] p-7 max-md:p-5 max-sm:p-4">
-        <Title text={name} size="md" className="mb-1 font-extrabold max-md:text-[22px]" />
+      <div className="w-[490px] bg-[#FCFCFC] p-7 max-md:p-5 max-sm:w-[350px] max-sm:p-4">
+        <Title
+          text={name}
+          size="md"
+          className="mb-1 font-extrabold max-md:text-[22px]"
+        />
 
         <p className="text-gray-400 max-md:text-[14px]">{textDetails}</p>
 
@@ -104,7 +114,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
           />
         </div>
 
-        <div className="scrollbar mt-8 max-md:mt-5 max-md:p-3 h-[420px] overflow-auto rounded-md bg-gray-50 p-5">
+        <div className="scrollbar mt-8 h-fit rounded-md bg-gray-50 p-5 max-md:mt-5 max-md:p-2">
           <div className="grid grid-cols-3 gap-3 max-sm:grid-cols-2">
             {ingredients.map((ingredient) => (
               <Ingredient

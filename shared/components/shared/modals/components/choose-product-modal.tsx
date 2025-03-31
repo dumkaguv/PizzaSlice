@@ -25,7 +25,7 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
       <DialogContent
         className={cn(
-          "!max-w-5xl overflow-auto bg-white p-0 max-h-[95dvh] h-[100%]",
+          "!max-w-5xl overflow-auto bg-white p-0 max-h-[95dvh] h-[100%] max-lg:w-[95%]",
           className,
         )}
       >

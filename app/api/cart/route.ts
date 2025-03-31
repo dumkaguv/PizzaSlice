@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
     }
 
     const userCart = await findOrCreateCart(token);
-    console.log(data);
+
     // Костыль, потому что призма не могла нормально сравнить
     // по ингредиентам один и тот же товар...
     const findCartItems = await prisma.cartItem.findMany({
@@ -110,8 +110,6 @@ export async function POST(req: NextRequest) {
         }
       }
     }
-
-    console.log(findCartItem);
 
     if (findCartItem) {
       await prisma.cartItem.update({

@@ -15,8 +15,6 @@ export const useSort = () => {
     {},
   );
 
-  console.log(selectedVariant);
-
   useEffect(() => {
     const params = qs.parse(window.location.search, {
       ignoreQueryPrefix: true,

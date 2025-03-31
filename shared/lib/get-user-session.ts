@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/shared/lib/auth-options";
 import { getServerSession } from "next-auth";
 
 export const getUserSession = async () => {

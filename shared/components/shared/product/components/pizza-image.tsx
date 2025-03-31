@@ -23,7 +23,7 @@ export const PizzaImage: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "relative flex w-full flex-1 items-center justify-center max-lg:mb-15",
+        "relative flex w-full flex-1 items-center justify-center max-lg:my-15",
         { "max-lg:mb-10": size === 30 },
         { "max-lg:mb-5": size === 40 },
         className,

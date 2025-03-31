@@ -58,7 +58,7 @@ export const Filters: React.FC<Props> = ({
           <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
             <p className="mb-3 font-bold">Цена от и до:</p>
 
-            <div className="mb-5 flex gap-3 max-w-[245px]">
+            <div className="mb-5 flex gap-3 max-w-[220px]">
               <Input
                 type="number"
                 placeholder="0"
@@ -89,7 +89,7 @@ export const Filters: React.FC<Props> = ({
                 filters.setPrices("priceFrom", prices[0]);
                 filters.setPrices("priceTo", prices[1]);
               }}
-              className="max-md:w-[245px]"
+              className="max-md:w-[220px]"
             />
           </div>
 
