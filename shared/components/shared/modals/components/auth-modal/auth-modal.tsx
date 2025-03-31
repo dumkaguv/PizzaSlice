@@ -28,7 +28,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogTitle className="hidden" />
       <Description className="hidden" />
-      <DialogContent className="w-[450px] bg-white p-10 max-sm:p-5 overflow-y-auto max-h-[95dvh]">
+      <DialogContent className="max-h-[95dvh] w-[450px] overflow-y-auto bg-white p-10 max-sm:p-5">
         {type === "login" ? (
           <LoginForm onClose={handleClose} />
         ) : (
@@ -41,7 +41,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
             variant="secondary"
             onClick={() =>
               signIn("github", {
-                callbackUrl: "/",
+                callbackUrl: process.env.NEXT_PUBLIC_URL,
                 redirect: true,
               })
             }
@@ -62,7 +62,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
             variant="secondary"
             onClick={() =>
               signIn("google", {
-                callbackUrl: "/",
+                callbackUrl: process.env.NEXT_PUBLIC_URL,
                 redirect: true,
               })
             }
