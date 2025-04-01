@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pizza Slice 🌐
 
-## Getting Started
+## Previews:
 
-First, run the development server:
+![Design preview for the PizzaSlice](./previews/main.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Design preview for the PizzaSlice](./previews/search.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Design preview for the PizzaSlice](./previews/story.png)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+![Design preview for the PizzaSlice](./previews/modal.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Design preview for the PizzaSlice](./previews/cart.png)
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Design preview for the PizzaSlice](./previews/checkout.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+![Design preview for the PizzaSlice](./previews/registration.png)
+
+
+![Design preview for the PizzaSlice](./previews/profile.png)
+
+## Welcome! 👋
+
+### Project Overview 🛒
+Pizza Slice is a full-featured e-commerce web application built with cutting-edge technologies to deliver a seamless shopping experience. The project combines the power of Next.js with a robust backend and modern UI components to create a high-performance online store.
+
+### Key Features ✨
+- Next.js 14 with App Router architecture
+
+- Type-safe development with TypeScript
+
+- Beautiful UI with TailwindCSS and ShadCN components
+
+- Full-stack capabilities with API routes and Server Actions
+
+- Authentication via NextAuth
+
+- Database integration with Prisma and PostgreSQL
+
+- State management with Zustand
+
+- Form handling with React Hook Form and Zod validation
+
+- Engaging UX with stories, toasts, and loading indicators
+
+
+### Technology Stack 🛠️
+Core Framework
+Next.js 15 - Leveraging:
+
+- Parallel Routes for complex layouts
+
+- Route Groups for organized routing
+
+- Server Actions for efficient data mutations
+
+- API routes for backend functionality
+
+- TypeScript - Ensuring type safety throughout the application
+
+- Styling & UI - TailwindCSS Utility-first CSS framework
+
+- ShadCN - Beautiful, accessible UI components built with Radix
+
+- Database & ORM Prisma - Next-generation Node.js ORM
+
+- PostgreSQL - Powerful relational database
+
+- NextAuth - Complete authentication solution
+
+- React Hook Form - Performant form management
+
+- Zod - TypeScript-first schema validation
+
+- Zustand - Lightweight state management solution
+
+- react-use - Collection of essential React hooks
+
+- nextjs-toploader - Elegant loading indicator
+
+- react-hot-toast - Beautiful notifications
+
+- react-insta-stories - Instagram-style stories component
+
+- lucide-react - Beautiful SVG icons
+
+- Resend - Email sending service
+
+## Development Setup 💻
+Clone the repository
+
+Install dependencies: npm install
+
+Set up environment variables (.env)
+
+Run the development server: npm run dev
+
+Open http://localhost:3000 in your browser
