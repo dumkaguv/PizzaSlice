@@ -26,7 +26,7 @@ export const useCategoriesIntersectionObserver = ({ categories }: Props) => {
         });
       },
       {
-        threshold: 0.5,
+        threshold: 0.15,
       },
     );
 
@@ -40,6 +40,7 @@ export const useCategoriesIntersectionObserver = ({ categories }: Props) => {
     categoryElements.forEach((el) => observer.observe(el));
 
     return () => {
+      observer.disconnect();
       categoryElements.forEach((el) => observer.unobserve(el));
     };
   }, [categories]);

@@ -19,6 +19,8 @@ export const ProfileButton: React.FC<Props> = ({
   const { data: session } = useSession();
   const width = useWindowSize().width;
 
+  console.log(width)
+
   return (
     <div className={className}>
       {!session ? (

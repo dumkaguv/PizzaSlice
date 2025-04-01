@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import { registerUser } from "@/app/actions";
 import { TFormRegisterValues, formRegisterSchema } from "./schemas";
-import { FormInput } from "@/shared/components/shared";
+import { FormInput, Title } from "@/shared/components/shared";
 import { Button } from "@/shared/components/ui";
 
 interface Props {
@@ -52,6 +52,14 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
         className="flex flex-col gap-5"
         onSubmit={form.handleSubmit(onSubmit)}
       >
+        <div className="flex items-center justify-between">
+                  <div className="mr-2">
+                    <Title text="Регистрация" size="md" className="font-bold" />
+                    <p className="text-gray-400">
+                      Зарегистрируйтесь, чтобы войти в свой аккаунт
+                    </p>
+                  </div>
+                </div>
         <FormInput name="email" label="E-Mail" required />
         <FormInput name="fullName" label="Полное имя" required />
         <FormInput name="password" label="Пароль" type="password" required />

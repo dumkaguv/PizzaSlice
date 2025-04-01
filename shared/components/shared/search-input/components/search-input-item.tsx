@@ -45,7 +45,7 @@ export const SearchInputItem: React.FC<Props> = ({
           product.name
         )}
       </span>
-      <span className="text-sm text-[#858585] whitespace-nowrap">{product.items[0].price} ₽</span>
+      <span className="text-sm text-[#858585] whitespace-nowrap">{product.items[0].price} L</span>
     </Link>
   );
 };

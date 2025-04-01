@@ -14,8 +14,8 @@ export const SuccessOrderTemplate: React.FC<Props> = ({ orderId, items }) => (
       {items.map((item) => (
         <li key={item.cartItemId}>
           <p>
-            {item.productItem.product.name} - {item.productItem.price} ₽ x{" "}
-            {item.quantity} шт. = {item.productItem.price * item.quantity} ₽
+            {item.productItem.product.name} - {item.productItem.price} L x{" "}
+            {item.quantity} шт. = {item.productItem.price * item.quantity} L
           </p>
         </li>
       ))}

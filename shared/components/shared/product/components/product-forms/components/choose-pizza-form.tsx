@@ -133,7 +133,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
           onClick={onAddClick}
           className="mt-10 h-[55px] w-full rounded-[18px] px-10 text-base"
         >
-          Добавить в корзину за {totalPrice} ₽
+          Добавить в корзину за {totalPrice} L
         </Button>
       </div>
     </div>

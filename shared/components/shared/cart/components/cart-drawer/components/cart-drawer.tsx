@@ -61,7 +61,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                 <span className="font-bold">
                   {items.length} {getCorrectEnding(items.length, "товар")}
                 </span>{" "}
-                на <span className="font-bold">{totalAmount} ₽</span>
+                на <span className="font-bold">{totalAmount} L</span>
               </>
             )}
           </SheetTitle>
@@ -104,7 +104,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                   <div className="relative -top-1 mx-2 flex-1 border-b border-dashed border-b-neutral-200" />
                 </span>
 
-                <span className="text-lg font-bold">{totalAmount} ₽</span>
+                <span className="text-lg font-bold">{totalAmount} L</span>
               </div>
 
               <Link href="/checkout">

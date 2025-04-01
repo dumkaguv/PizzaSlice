@@ -8,5 +8,5 @@ interface Props {
 }
 
 export const CartItemDetailsPrice: React.FC<Props> = ({ price, className }) => {
-  return <span className={cn("font-bold max-sm:text-sm", className)}>{price} ₽</span>;
+  return <span className={cn("font-bold max-sm:text-sm", className)}>{price} L</span>;
 };

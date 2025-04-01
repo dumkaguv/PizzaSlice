@@ -46,7 +46,7 @@ export const ProductCard: React.FC<Props> = ({ ...props }) => {
 
         <div className="mt-4 flex justify-between self-end">
           <span className="text-[20px]">
-            от <b>{price} ₽</b>
+            от <b>{price} L</b>
           </span>
 
           <Button variant="secondary" className="font-black">
